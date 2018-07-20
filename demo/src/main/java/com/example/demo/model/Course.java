@@ -42,4 +42,10 @@ public class Course {
 	public void setSteps(List<String> steps) {
 		this.steps = steps;
 	}
+	@Override
+	public String toString() {
+		return String.format(
+				"Course [id=%s, name=%s, description=%s, steps=%s]", id, name,
+				description, steps);
+	}
 }

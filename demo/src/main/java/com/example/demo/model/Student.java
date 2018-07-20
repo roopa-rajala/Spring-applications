@@ -7,6 +7,9 @@ public class Student {
 	private String name;
 	private String description;
 	private List<Course> courses;
+	public Student(){
+		
+	}
 	public Student(String id, String name, String description, List<Course> courses) {
 		super();
 		this.id = id;
@@ -38,6 +41,11 @@ public class Student {
 	public void setCourses(List<Course> courses) {
 		this.courses = courses;
 	}
-	
+	@Override
+	public String toString() {
+		return String.format(
+				"Student [id=%s, name=%s, description=%s, courses=%s]", id,
+				name, description, courses);
+	}
 
 }

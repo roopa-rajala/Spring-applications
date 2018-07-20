@@ -49,7 +49,7 @@ public class StudentService {
 		return student.getCourses();
 	}
 
-	private Student retriveStudent(String studentId) {
+	public Student retriveStudent(String studentId) {
 		// TODO Auto-generated method stub
 		for(Student student:students){
 			if(student.getId().equals(studentId)){
@@ -71,5 +71,49 @@ public class StudentService {
 			}
 		}
 		return null;
+	}
+
+	
+
+	public List<Student> retrieveStudents() {
+		// TODO Auto-generated method stub
+		if(students!=null){
+			return students;
+		}
+		
+		
+		return null;
+	}
+
+	public Student addStudent(Student newStudent) {
+		// TODO Auto-generated method stub
+		System.out.println("->"+newStudent.getId());
+		students.add(newStudent);
+		return newStudent;
+	}
+
+	public boolean deleteStudent(String studentId) {
+		// TODO Auto-generated method stub
+		Student student=retriveStudent(studentId);
+		if(student==null){
+			return false;
+		}
+		students.remove(student);
+		return true;
+		
+	}
+
+	public Student updateStudent(Student updateStudent) {
+		// TODO Auto-generated method stub
+		if(updateStudent==null){
+			return null;
+		}
+		Student student=retriveStudent(updateStudent.getId());
+		if(student==null){
+			addStudent(updateStudent);
+			return updateStudent;
+		}
+		student.setName(updateStudent.getName());
+		return updateStudent;
 	}
 }
