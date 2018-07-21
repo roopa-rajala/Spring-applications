@@ -41,11 +41,11 @@ public class StudentController {
 	public List<Student> retrieveDetailsForStudents(){
 		return studentService.retrieveStudents();	
 		}
-	@RequestMapping(value="/students",method=RequestMethod.POST)
-	void registerStudent(
+	@RequestMapping(value="/students",method=RequestMethod.POST,consumes=APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> registerStudent(
 			 @RequestBody Student newStudent) {
 
-		Student student = studentService.addStudent(newStudent);
+		return new ResponseEntity<Object>(studentService.addStudent(newStudent),HttpsStatus.Ok);
 
 		
 	}
@@ -56,13 +56,12 @@ public class StudentController {
 		boolean deleted= studentService.deleteStudent(studentId);
 	
 	}
-	@RequestMapping(value="/students",method=RequestMethod.PUT)
-	void updateStudent(
+	@RequestMapping(value="/students",method=RequestMethod.PUT,consumes=APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> updateStudent(
 			 @RequestBody Student updateStudent) {
 		// this service can change only name of the student
-		Student student = studentService.updateStudent(updateStudent);
-
-		
+		//Student student = studentService.updateStudent(updateStudent);
+		return new ResponseEntity<Object>(studentService.updateStudent(updateStudent),HttpsStatus.Ok);
 	}
 	
 }
