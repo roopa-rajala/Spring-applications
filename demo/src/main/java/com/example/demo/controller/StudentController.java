@@ -45,7 +45,7 @@ public class StudentController {
 	public ResponseEntity<Object> registerStudent(
 			 @RequestBody Student newStudent) {
 
-		return new ResponseEntity<Object>(studentService.addStudent(newStudent),HttpsStatus.Ok);
+		return new ResponseEntity<Object>(studentService.addStudent(newStudent),HttpStatus.Ok);
 
 		
 	}
@@ -61,7 +61,7 @@ public class StudentController {
 			 @RequestBody Student updateStudent) {
 		// this service can change only name of the student
 		//Student student = studentService.updateStudent(updateStudent);
-		return new ResponseEntity<Object>(studentService.updateStudent(updateStudent),HttpsStatus.Ok);
+		return new ResponseEntity<Object>(studentService.updateStudent(updateStudent),HttpStatus.Ok);
 	}
 	
 }
